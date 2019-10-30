@@ -38,4 +38,8 @@ if __name__ == '__main__':
         text = f.read()
         for k, v in GRAMMARS.items():
             text = re.sub(k, v, text)
-    exec(text)
+    if not mode == "translate":
+        exec(text)
+    else:
+        with open(f"ru{file}", "w") as f:
+            f.write(text)
