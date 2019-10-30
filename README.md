@@ -19,8 +19,14 @@
 
 # Как компилировать?
 
+Запустить RUPYTHON код:
 ```sh
-python3.7 main.py <file.py>
+python3.7 main.py <file.py> run
+```
+
+Скомпилировать обычный Python в RUPYTHON:
+```sh
+python3.7 main.py <file.py> compile
 ```
 
 # Sponsors
