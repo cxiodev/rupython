@@ -13,12 +13,34 @@ GRAMMARS = {"асинк функция": "async def",
             "если": "if",
             "иначе": "else",
             "вернуть": "return",
+            "ввести": "input",
+            "класс": "class",
+            "сумма": "sum",
+            "районе": "range",
+            "дальше": "continue",
+            "ниче": "pass",
+            "харош": "break",
+            "попробуй": "try",
+            "сломалось": "except",
+            "анонфункция": "lambda",
             }
 
 CONDITIONS_AND_ETC = {"из": "from", "в": "in", "как": "as"}
-TYPES = {"Правда": "True", "Ложь": "False"}
+
+TYPES = {"Правда": "True",
+         "Ложь": "False",
+         "строка": "str",
+         "число": "int",
+         "хз": "bool",
+         "словарь": "dict",
+         "список": "list",
+         "недосписок": "tuple",
+         "множество": "set"
+        }
+
 GRAMMARS.update(TYPES)
 GRAMMARS.update(CONDITIONS_AND_ETC)
+
 
 def get_file_name() -> str:
     try:
@@ -26,6 +48,7 @@ def get_file_name() -> str:
         return name
     except IndexError:
         raise ValueError("Bad file name")
+
 
 def get_mode() -> str:
     # run - try run RUPYTHON code
@@ -40,12 +63,14 @@ def get_mode() -> str:
 
     return mode
 
+
 def translate(file_name: str, grammars: dict) -> str:
     with open(file_name, "r") as f:
         text = f.read()
         for k,v in grammars.items():
             text = text.replace(k, v)
     return text
+
 
 def compile(code: str):  # noqa
     with open(f"ru{file}", "w") as f:
