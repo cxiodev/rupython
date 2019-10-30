@@ -23,6 +23,17 @@ if __name__ == '__main__':
     except:
         raise SyntaxError("Bad file name")
 
+    try:
+        mode = sys.argv[2]
+    except:
+        mode = "compile"
+
+    if mode not in ["compile", "translate"]:
+        raise SyntaxError("Bad mode")
+
+    if mode == "translate":
+        GRAMMARS = {v: k for k, v in GRAMMARS.items()}
+
     with open(file, "r") as f:
         text = f.read()
         for k, v in GRAMMARS.items():
