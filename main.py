@@ -1,5 +1,4 @@
 import sys
-import re
 
 __version__ = "1.0.0"
 
@@ -8,16 +7,18 @@ GRAMMARS = {"асинк функция": "async def",
             "эвейт": "await",
             "пиши": "print",
             "импорт": "import",
-            "из": "from",
             "погнали": "for",
             "пока": "while",
-            "в": "in",
-            "как": "as",
-            "строка": "str",
-            "число": "int",
-            "Правда": "True",
-            "Ложь": "False"
+            "нуилиж": "elif",
+            "если": "if",
+            "иначе": "else",
+            "вернуть": "return",
             }
+
+CONDITIONS_AND_ETC = {"из": "from", "в": "in", "как": "as"}
+TYPES = {"Правда": "True", "Ложь": "False"}
+GRAMMARS.update(TYPES)
+GRAMMARS.update(CONDITIONS_AND_ETC)
 
 def get_file_name() -> str:
     try:
@@ -42,8 +43,8 @@ def get_mode() -> str:
 def translate(file_name: str, grammars: dict) -> str:
     with open(file_name, "r") as f:
         text = f.read()
-        for k, v in grammars.items():
-            text = re.sub(k, v, text)
+        for k,v in grammars.items():
+            text = text.replace(k, v)
     return text
 
 def compile(code: str):  # noqa
