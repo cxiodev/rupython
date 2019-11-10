@@ -23,6 +23,10 @@ GRAMMARS = {"асинк функция": "async def",
             "попробуй": "try",
             "сломалось": "except",
             "анонфункция": "lambda",
+            "длина": "len",
+            "супер": "super",
+            "заокругли": "round",
+            "@статикфунка": "@staticmethod()"
             }
 
 CONDITIONS_AND_ETC = {"из": "from", "в": "in", "как": "as"}
