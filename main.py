@@ -69,7 +69,7 @@ def get_mode() -> str:
 
 
 def translate(file_name: str, grammars: dict) -> str:
-    with open(file_name, "r") as f:
+    with open(file_name, "r", encoding="utf-8") as f:
         text = f.read()
         for k,v in grammars.items():
             text = text.replace(k, v)
