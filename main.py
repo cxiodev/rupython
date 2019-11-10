@@ -77,7 +77,7 @@ def translate(file_name: str, grammars: dict) -> str:
 
 
 def compile(code: str):  # noqa
-    with open(f"ru{file}", "w") as f:
+    with open(f"ru{file}", "w", encoding="utf-8") as f:
         pre = f"""
 # TRANSLATED BY RUPYTHON {__version__}
 #
